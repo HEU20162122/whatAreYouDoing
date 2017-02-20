@@ -264,18 +264,22 @@ button:focus {
 
 .level--1::after {
 	content: '地点视角';
+	color: #dc4b7c;
 }
 
 .level--2::after {
 	content: '院系视角1';
+	color: #7cbf7f;
 }
 
 .level--3::after {
 	content: '院系视角2';
+	color: #7cbf7f;
 }
 
 .level--4::after {
 	content: '组织视角';
+	color: #6584c7;
 }
 
 
@@ -913,6 +917,9 @@ button:focus {
 .pin--4-5 { top: 33vmin; left: 38vmin; }
 .pin--4-6 { top: 39vmin; left: 56vmin; }
 .pin--4-7 { top: 58vmin; left: 10vmin; }
+.pin--4-8 { top: 38vmin; left: 10vmin; }
+.pin--4-9 { top: 18vmin; left: 60vmin; }
+
 
 /* Mobile compatability */
 .open-search,
