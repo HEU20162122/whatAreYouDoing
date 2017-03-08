@@ -5,10 +5,8 @@ $http.get('a.php',{
   params:{type: 1,
     element: 2},
 }).then(function(res){
-  console.log(res);
-  var item = res.data;
-  var str = JSON.stringify(item);
   $scope.items=res.data;
+  console.log(res.data);
   },function(){
     alert('fault');
   });
