@@ -1,8 +1,6 @@
 <?php
-	$mysqli = new mysqli("138.68.12.160", "cuteluckydog", "Xhsca312", "whatAreYouDoing");
-	echo 12;
-	
-	$sql = "SELECT * FROM try";
+	$mysqli = new mysqli("localhost", "root", "Xhsca312", "book_store");
+  $sql = "SELECT * FROM books";
 	$result = $mysqli->query($sql);
 
 
