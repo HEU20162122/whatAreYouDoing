@@ -1,0 +1,53 @@
+<!-- File: chapter4/two-forms-databinding.html -->
+<html ng-app="notesApp">
+<head><title>Notes App</title></head>
+<body ng-controller="MainCtrl as ctrl">
+
+
+  <form ng-submit="ctrl.submit2()">
+
+    具体地点<br>
+    <input type="text" ng-model="ctrl.item.place"><br>
+    时间<br>
+    <input type="text" ng-model="ctrl.item.time"><br>
+    内容<br>
+    <input type="text" ng-model="ctrl.item.word"><br>
+    标题<br>
+    <input type="text" ng-model="ctrl.item.title"><br>
+    组织<br>
+    <input type="text" ng-model="ctrl.item.orginization"><br>
+    学院<br>
+    <input type="text" ng-model="ctrl.item.college"><br>
+    教学楼<br>
+    <input type="text" ng-model="ctrl.item.building"><br>
+    <input type="submit" value="Submit">
+  </form>
+
+<script
+  src=map/angular.js>
+</script>
+<script type="text/javascript">
+  angular.module('notesApp', [])
+    .controller('MainCtrl', ['$http',function($http) {
+      var self = this;
+      self.submit2 = function() {
+        console.log('Second form submit with ', self.item);
+      };
+      $http({
+    method:'post',
+    url:'php/input.php',
+    data:{name:'test',age:20},
+    headers:{'Content-Type': 'application/x-www-form-urlencoded'},
+    transformRequest: function (data) {
+    　　return $.param(data);
+    }
+}).then(function successCallback(response) {
+    alert('添加成功');
+}, function errorCallback(response) {
+    alert('添加失败');
+});
+    }]);
+</script>
+<p>asdasd</p>
+</body>
+</html>
