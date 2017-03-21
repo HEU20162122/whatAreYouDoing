@@ -19,7 +19,7 @@ $this->book_price=$Price;
 $obj=new book("7-115-14688-8", "php 数据库开发实例教程", "周五", "长江出版社", 49);
 */
 
-$mysqli = new mysqli('localhost', 'root', 'Xhsca312', 'whatAreYouDoing');
+$mysqli = new mysqli('localhost', 'root', 'tyz971005', 'whatAreYouDoing');
 /*if(mysqli_connect_error()){
     echo mysqli_connect_error();
 }else{
