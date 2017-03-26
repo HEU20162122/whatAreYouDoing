@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+	<title>提交页面</title>
+<meta charset="UTF-8" />
+	<!-- LOAD BOOTSTRAP CSS -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<!-- LOAD JQUERY -->
+
+	<!-- LOAD ANGULAR -->
+	<script src="map/angular.js"></script>
+
+	<!-- PROCESS FORM WITH AJAX (NEW) -->
+	<script>
+		// define angular module/app
+		var formApp = angular.module('formApp', []);
+		// create angular controller and pass in $scope and $http
+		function formController($scope, $http) {
+			$scope.activities =
+			[
+					{ type: "college" , name: "cb" ,name1:"船舶工程学院"},
+					{ type: "college" , name: "hj" ,name1:"航天与建筑工程学院"},
+					{ type: "college" , name: "nd" ,name1:"动力与能源工程学院"},
+					{ type: "college" , name: "ss" ,name1:"水声工程学院"},
+					{ type: "college" , name: "zdh" ,name1:"自动化学院"},
+					{ type: "college" , name: "jd",name1:"机电工程学院" },
+					{ type: "college" , name: "cs" ,name1:"计算机科学与技术学院"},
+					{ type: "college" , name: "jg",name1:"经济管理学院" },
+					{ type: "college" , name: "xt" ,name1:"信息与通信工程学院"},
+					{ type: "college" , name: "l" ,name1:"理学院"},
+					{ type: "college" , name: "ch" ,name1:"材料科学与化学工程学院"},
+					{ type: "college" , name: "rw" ,name1:"人文社会科学学院"},
+					{ type: "college" , name: "wy" ,name1:"外语系"},
+					{ type: "college" , name: "h" ,name1:"核科学与技术学院"},
+					{ type: "college" , name: "ty" ,name1:"体育部"},
+					{ type: "college" , name: "gf" ,name1:"国防教育学院"},
+					{ type: "college" , name: "gh" ,name1:"国际合作教育学院"},
+					{ type: "orginization" , name: "xsh" ,name1:"学生会 "},
+					{ type: "orginization" , name: "yjsh" ,name1:"研究生会"},
+					{ type: "orginization" , name: "sl" ,name1:"社联"},
+					{ type: "orginization" , name: "kx" ,name1:"科协"},
+					{ type: "orginization" , name: "qzx" ,name1:"青志协"},
+					{ type: "orginization" , name: "qhdc" ,name1:"起航大学生传媒中心"},
+					{ type: "orginization" , name: "zzs" ,name1:"杂志社"},
+					{ type: "orginization" , name: "yglt" ,name1:"阳光论坛"},
+					{ type: "orginization" , name: "dc",name1:"大学生创业联盟"},
+					{ type: "orginization" , name: "tw",name1: "团委"},
+			];
+			// create a blank object to hold our form information
+			// $scope will allow this to pass between controller and view
+			$scope.formData = {};
+			// process the form
+			$scope.processForm = function() {
+				$http({
+			        method  : 'POST',
+			        url     : 'a.php',
+			        data    : $.param($scope.formData),  // pass in data as strings
+			        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+			    })
+			        .success(function(data) {
+			            console.log(data);
+			            if (!data.success) {
+			            	// if not successful, bind errors to error variables
+			                $scope.errorName = data.errors.name;
+			                $scope.errorSuperhero = data.errors.superheroAlias;
+			            } else {
+			            	// if successful, bind success message to message
+			                $scope.message = data.message;
+                                        $scope.errorName = '';
+			                $scope.errorSuperhero = '';
+			            }
+			        });
+			};
+
+		}
+	</script>
+        <style>
+            .ng-valid.ng-dirty{
+                border-color: green;
+            }
+            .ng-invalid.ng-dirty{
+                border-color: red;
+            }
+        </style>
+</head>
+<!-- apply the module and controller to our body so angular is applied to that -->
+<body ng-app="formApp" ng-controller="formController">
+<div class="container">
+<div class="col-md-6 col-md-offset-3">
+
+	<!-- PAGE TITLE -->
+	<div class="page-header">
+		<h1><span class="glyphicon glyphicon-pencil"></span> 提交页面</h1>
+	</div>
+
+	<!-- SHOW ERROR/SUCCESS MESSAGES -->
+	<div id="messages" class="well" ng-show="message">{{ message }}</div>
+
+	<!-- FORM -->
+	<form ng-submit="processForm()">
+
+		<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorName }">
+			<label>标题</label>
+			<input type="text" name="title" class="form-control"  ng-model="formData.title">
+		</div>
+
+		<!-- NAME -->
+		<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorName }" >
+			<label>举办地点</label>
+				<select class="input-md form-control" ng-model="formData.place">
+				<option value="11#" >11#</option>
+				<option value="21b">21B</option>
+				<option value="qh">起航</option>
+				<option value="tsg">图书馆</option>
+			</select>
+		<span class="help-block" ng-show="errorName">{{ errorName }}</span>
+	</div>
+
+		<!-- NAME -->
+		<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorName }">
+			<label>时间</label>
+			<input type="text" name="time" class="form-control" placeholder="2017/03/06/17:32" ng-model="formData.time">
+                    <p style="flaot:right"> (请按照以上格式提交)</p>
+		</div>
+
+		<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorName }">
+			<label>申办单位</label>
+			<select ng-model = "formData.orginization"
+							class="form-control"
+							ng-options = "a.name1 group by a.type for a in activities" >
+			</select >
+		<span class="help-block" ng-show="errorName">{{ errorName }}</span>
+	</div>
+
+			<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorName }">
+				<label>文字内容</label>
+				<textarea  type="text" name="title" class="form-control"  ng-model="formData.word" style="height:300px;text-align:top">
+				</textarea>
+			</div>
+
+
+		<!-- SUBMIT BUTTON -->
+		<button type="submit" class="btn btn-success btn-lg btn-block">
+			<span class="glyphicon glyphicon-flash"></span> Submit!
+		</button>
+	</form>
+
+
+	<!-- SHOW DATA FROM INPUTS AS THEY ARE BEING TYPED -->
+	<pre>
+		{{ formData }}
+	</pre>
+
+
+
+
+</div>
+</div>
+</body>
+</html>
