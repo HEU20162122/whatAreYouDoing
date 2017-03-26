@@ -1,15 +1,20 @@
 myapp1 = angular.module('myApp', []);
 
 myapp1.controller('jgCtrl', function($scope,$http) {
+$http({
+      method  : 'POST',
+      url     : 'json.php',
+      data    : $.param({'jg'}),  // pass in data as strings
+      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+    })
 $http.get('json.php',{
-    params:{type: 'jg',
-      },
+      params:{type: 'jg',},
 }).then(function(res){
-  $scope.items=res.data;
-  console.log(res);
-  },function(){
-    alert('fault');
-  });
+    $scope.items=res.data;
+    console.log(res);
+    },function(){
+      alert('fault');
+      });
 });
 
 myapp1.controller('cbCtrl', function($scope,$http) {
