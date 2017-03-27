@@ -124,18 +124,63 @@
                     <p style="flaot:right"> (请按照以上格式提交)</p>
 		</div>
 
-		<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorName }">
-			<label>申办单位</label>
-			<select ng-model = "formData.orginization"
-							class="form-control"
-							ng-options = "a.name1 group by a.type for a in activities" >
-			</select >
+		<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorName }" >
+			<label>承办院系</label>
+				<select class="input-md form-control" ng-model="formData.college">
+
+					    <option value= "cb" >船舶工程学院</option>
+					    <option value= "hj" >航天与建筑工程学院</option>
+					    <option value= "nd" >动力与能源工程学院</option>
+					    <option value= "ss" >水声工程学院</option>
+					    <option value= "zdh" >自动化学院</option>
+					    <option value= "jd">机电工程学院	 </option>
+					    <option value= "cs" >计算机科学与技术学院</option>
+					    <option value= "jg">经济管理学院</option>
+					    <option value= "xt" >信息与通信工程学院</option>
+					    <option value= "l" >理学院</option>
+					    <option value= "ch" >材料科学与化学工程学院</option>
+					    <option value= "rw" >人文社会科学学院</option>
+					    <option value= "wy" >外语系</option>
+					    <option value= "h" >核科学与技术学院</option>
+					    <option value= "ty" >体育部</option>
+					    <option value= "gf" >国防教育学院</option>
+					    <option value= "gh" >国际合作教育学院</option>
+			</select>
 		<span class="help-block" ng-show="errorName">{{ errorName }}</span>
 	</div>
 
+
+	<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorName }" >
+		<label>承办机构</label>
+			<select class="input-md form-control" ng-model="formData.orginization">
+				<option value="xsh" >学生会 </option>
+				<option value="yjsh" >研究生会</option>
+				<option value="sl" >社联</option>
+				<option value="kx" >科协</option>
+				<option value="qzx" >青志协</option>
+				<option value="qhdc" >起航大学生传媒中心</option>
+				<option value="zzs" >杂志社</option>
+				<option value="yglt" >阳光论坛</option>
+				<option value="dc">大学生创业联盟</option>
+				<option value="tw"> 团委</option>
+		</select>
+	<span class="help-block" ng-show="errorName">{{ errorName }}</span>
+</div>
 			<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorName }">
-				<label>文字内容</label>
-				<textarea  type="text" name="title" class="form-control"  ng-model="formData.word" style="height:300px;text-align:top">
+				<label>字段1</label>
+				<textarea  type="text" name="title" class="form-control"  ng-model="formData.word1" style="height:300px;text-align:top">
+				</textarea>
+			</div>
+
+			<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorName }">
+				<label>字段2</label>
+				<textarea  type="text" name="title" class="form-control"  ng-model="formData.word2" style="height:300px;text-align:top">
+				</textarea>
+			</div>
+
+			<div id="name-group" class="form-group" ng-class="{ 'has-error' : errorName }">
+				<label>字段3</label>
+				<textarea  type="text" name="title" class="form-control"  ng-model="formData.word3" style="height:300px;text-align:top">
 				</textarea>
 			</div>
 
