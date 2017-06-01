@@ -27,13 +27,13 @@
 */
 
 
-	 $mysqli = new mysqli('localhost', 'root', 'Xhsca312', 'whatAreYouDoing');
+	 $mysqli = new mysqli('localhost', 'root', 'tyz971005', 'whatAreYouDoing');
 	 /*if(mysqli_connect_error()){
 	     echo mysqli_connect_error();
 	 }else{
 	   echo "yes";
 	 }*/
-	 $sql = "INSERT INTO info (title,place,word1,word2,word3,college,time,orginization) VALUES ('$title','$place','$word1','$word2','$word3','$college','$time','$orginization')";
+	 $sql = "INSERT INTO try (title,place,word1,word2,word3,college,time,orginization) VALUES ('$title','$place','$word1','$word2','$word3','$college','$time','$orginization')";
 	 $result = $mysqli->query($sql);
 
 	 $mysqli->close();

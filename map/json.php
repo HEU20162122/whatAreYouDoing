@@ -15,4 +15,5 @@
 	$result->free();
 
 	$mysqli->close();
+	echo $_GET['id'];
 ?>

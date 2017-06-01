@@ -570,7 +570,7 @@
 							<p class="content__meta">
 								<div ng-controller="jgCtrl"  >
 									<ol style="float:left;text-align:left">
-										<li ng-repeat="item in items">
+										<li ng-repeat="item in items track by $index">
 											<div style="font-size:20px;line-height:40px;  ">
 												{{item.title}}
 											</div>
