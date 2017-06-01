@@ -1,13 +1,11 @@
 myapp1 = angular.module('myApp', []);
 
-
 myapp1.controller('jgCtrl', function($scope,$http) {
 
 $http.get('json.php',{
-  method: "get",
-  params:{id:1},
-  //url:"json.php"
-
+	method: "get",
+                params:{type:1},
+                url:"json.php"
 }).then(function(res){
     $scope.items=res.data;
     console.log(res);
